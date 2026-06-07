@@ -10,7 +10,46 @@ enum Lines {
     Green,
     Orange,
     Violet,
-    Brown
+    Brown,
+}
+
+/// Структура графа метро
+/// - `stations` - Вектор сильных ссылок на станции метро
+#[derive(Debug)]
+struct SubwayGraph {
+    stations: Vec<Rc<RefCell<Station>>>,
+}
+
+impl SubwayGraph {
+    pub fn new() -> Self {
+        Self {
+            stations: Vec::new(),
+        }
+    }
+
+    /// Метод для создания новой станции, создает smart pointer с подсчетом ссылок и внутренней изменяемостью
+    /// # Arguments
+    /// - `name` Название станции
+    /// - `line` Линия метро этой станции
+    /// # Returns
+    /// Индекс добавленной станции в векторе `stations`
+    pub fn add_station(&mut self, name: String, line: Lines) -> usize {
+        let new_station = Rc::new(RefCell::new(Station::new(name, line)));
+        self.stations.push(new_station);
+        self.stations.len() - 1
+    }
+
+    /// Метод для создания однонаправленной связи между станциями
+    fn add_one_way_connection(&self, from: usize, to: usize, travel_time: usize) {
+        let to_station = self.stations[to].clone();
+        self.stations[from].borrow_mut().add_connection(to_station, travel_time);
+    }
+
+    /// Метод для создания двухнаправленной связи между станциями
+    pub fn add_two_way_connection(&self, station_a: usize, station_b: usize, travel_time: usize) {
+        self.add_one_way_connection(station_a, station_b, travel_time);
+        self.add_one_way_connection(station_b, station_a, travel_time);
+    }
 }
 
 /// Структура станции
