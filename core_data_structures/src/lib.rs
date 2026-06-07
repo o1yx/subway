@@ -53,11 +53,14 @@ impl SubwayGraph {
 }
 
 /// Структура станции
+/// - `name` - Название станции
+/// - `line` - Линия метро
+/// - `connections` - Вектор связей с другими станциями
 #[derive(Debug)]
 struct Station {
-    name: String,                   // Название станции
-    line: Lines,                    // Линия метро
-    connections: Vec<Connection>    // Связи с другими станциями
+    name: String,
+    line: Lines,
+    connections: Vec<Connection>,
 }
 
 impl Station {
@@ -75,10 +78,12 @@ impl Station {
 }
 
 /// Структура связи станций
+/// - `to` - Связанная станция
+/// - `travel_time` - Время перемещения до станции
 #[derive(Debug)]
 struct Connection {
-    to: Weak<RefCell<Station>>,             // Связанная станция
-    travel_time: usize,                     // Время перемещения до станции
+    to: Weak<RefCell<Station>>,
+    travel_time: usize,
 }
 
 impl Connection {
