@@ -124,4 +124,14 @@ mod tests {
         println!("{:#?}", station_a);
         println!("{:#?}", station_b);
     }
+
+    #[test]
+    fn new_subway_graph() {
+        let mut graph = SubwayGraph::new();
+        let idx_station_a = graph.add_station("Station_A".to_string(), Lines::Red);
+        let idx_station_b = graph.add_station("Station_B".to_string(), Lines::Red);
+        graph.add_two_way_connection(idx_station_a, idx_station_b, 10);
+
+        println!("{:#?}", graph);
+    }
 }
