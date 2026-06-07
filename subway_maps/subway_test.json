@@ -1,0 +1,12 @@
+{
+    "stations": [
+        {"name": "Station_A", "line": "Red"},
+        {"name": "Station_B", "line": "Red"},
+        {"name": "Station_C", "line": "Red"}
+    ],
+    
+    "connections": [
+        {"station_a": 0, "station_b": 1, "travel_time": 10},
+        {"station_a": 1, "station_b": 2, "travel_time": 7}
+    ]
+}
