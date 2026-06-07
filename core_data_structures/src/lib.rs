@@ -27,6 +27,10 @@ impl Station {
             connections: Vec::new()
         }
     }
+
+    pub fn add_connection(&mut self, to_station: Rc<RefCell<Station>>, travel_time: usize) {
+        self.connections.push(Connection::new(Rc::downgrade(&to_station), travel_time));
+    }
 }
 
 /// Структура связи станций
