@@ -1,10 +1,11 @@
 use std::rc::{Rc, Weak};
 use std::cell::RefCell;
+use serde::{Deserialize};
 
 /// Перечисление линий метро
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 #[repr(u8)]
-enum Lines {
+pub enum Lines {
     Red = 1,
     Blue,
     Green,
