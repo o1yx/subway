@@ -64,15 +64,16 @@ struct Station {
 }
 
 impl Station {
-    pub fn new(name: String, line: Lines) -> Self {
+    fn new(name: String, line: Lines) -> Self {
         Self {
             name,
             line,
-            connections: Vec::new()
+            connections: Vec::new(),
         }
     }
 
-    pub fn add_connection(&mut self, to_station: Rc<RefCell<Station>>, travel_time: usize) {
+    /// Метод для создания односторонней связи станций
+    fn add_connection(&mut self, to_station: Rc<RefCell<Station>>, travel_time: usize) {
         self.connections.push(Connection::new(Rc::downgrade(&to_station), travel_time));
     }
 }
@@ -90,7 +91,7 @@ impl Connection {
     fn new(to_station: Weak<RefCell<Station>>, travel_time: usize) -> Self {
         Self {
             to: to_station,
-            travel_time
+            travel_time,
         }
     }
 }
