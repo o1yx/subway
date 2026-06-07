@@ -1,4 +1,4 @@
-use std::rc::Rc;
+use std::rc::{Rc, Weak};
 use std::cell::RefCell;
 
 /// Перечисление линий метро
@@ -31,12 +31,12 @@ impl Station {
 
 /// Структура связи станций
 struct Connection {
-    to: Rc<RefCell<Station>>,                /// Связанная станция
-    travel_time: usize,             // Время перемещения до станции
+    to: Weak<RefCell<Station>>,             // Связанная станция
+    travel_time: usize,                     // Время перемещения до станции
 }
 
 impl Connection {
-    pub fn new(to_station: Rc<RefCell<Station>>, travel_time: usize) -> Self {
+    fn new(to_station: Weak<RefCell<Station>>, travel_time: usize) -> Self {
         Self {
             to: to_station,
             travel_time
