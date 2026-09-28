@@ -1,0 +1,114 @@
+{
+    "subway": [
+        {
+            "line": "Red",
+            "stations": [
+            "Devyatkino",
+            "Grazhdansky Prospekt",
+            "Akademicheskaya",
+            "Poliyekhnicheskay",
+            "Ploshcad Muzhestva",
+            "Lesnaya",
+            "Vyborgskaya",
+            "Ploshchad Lenina",
+            "Chernyshevskaya",
+            "Ploschad Vosstania",
+            "Vladimirskaya",
+            "Pushkinskaya",
+            "Tekhnologichesky Institut-1",
+            "Baltiyskaya",
+            "Narvskaya",
+            "Kirovsky Zavod",
+            "Avtovo",
+            "Leninsky Prospekt",
+            "Prospekt Veteranov"
+            ]
+        },
+
+        {
+            "line": "Blue",
+            "stations": [
+                "Parnas",
+                "Prospekt Prosvescheniya",
+                "Ozerki",
+                "Udelnaya",
+                "Pionerskaya",
+                "Chyornaya Rechka",
+                "Petrogradskaya",
+                "Gorkovskaya",
+                "Nevsky Prospekt",
+                "Sennaya Ploshchad",
+                "Tekhnologichesky Institut-2",
+                "Frunzenskaya",
+                "Moskovskie Vorota",
+                "Elektrosila",
+                "Park Pobedy",
+                "Moskovskaya",
+                "Zvyozdnaya",
+                "Kupchino"
+            ]
+        },
+
+        {
+            "line": "Green",
+            "stations": [
+                "Begovaya",
+                "Zenit",
+                "Primorskaya",
+                "Vasileostrovskaya",
+                "Gostiny Dvor",
+                "Mayakovskaya",
+                "Ploshchad Alexandra Nevskogo-1",
+                "Yelizarovskaya",
+                "Lomonosovskaya",
+                "Proletarskaya",
+                "Obukhovo",
+                "Rybatskoe"
+            ]
+        },
+
+        {
+            "line": "Orange",
+            "stations": [
+                "Gorny institut",
+                "Spasskaya",
+                "Dostoyevskaya",
+                "Ligovsky Prospekt",
+                "Ploshchad Alexandra Nevskogo-2",
+                "Novocherkasskaya",
+                "Ladozhskaya",
+                "Prospekt Bolshevikov",
+                "Ulitsa Dybenko"
+            ]
+        },
+
+        {
+            "line": "Violet",
+            "stations": [
+                "Komendantsky Prospekt",
+                "Staraya Derevnya",
+                "Krestovsky Ostrov",
+                "Chkalovskaya",
+                "Sportivnaya",
+                "Admiralteyskaya",
+                "Sadovaya",
+                "Zvenigorodskaya",
+                "Obvodny Kanal",
+                "Volkovskaya",
+                "Bukharestskaya",
+                "Mezhdunarodnaya",
+                "Prospekt Slavy",
+                "Dunayskaya",
+                "Shushary"
+            ]
+        },
+
+        {
+            "line": "Brown",
+            "stations": [
+                "Yugo-Zapadnaya",
+                "Putilovskaya"
+            ]
+        }
+    ]
+}
