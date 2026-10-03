@@ -1,12 +1,12 @@
 {
-    "subway": [
+    "lines": [
         {
             "line": "Red",
             "stations": [
             "Devyatkino",
             "Grazhdansky Prospekt",
             "Akademicheskaya",
-            "Poliyekhnicheskay",
+            "Politekhnicheskay",
             "Ploshcad Muzhestva",
             "Lesnaya",
             "Vyborgskaya",
@@ -109,6 +109,18 @@
                 "Yugo-Zapadnaya",
                 "Putilovskaya"
             ]
+        }
+    ],
+
+    "connections": [
+        {
+            "station_a": "Tekhnologichesky Institut-1",
+            "station_b": "Tekhnologichesky Institut-2"
+        },
+
+        {
+            "station_a": "Pushkinskaya",
+            "station_b": "Zvenigorodskaya"
         }
     ]
 }
