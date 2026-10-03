@@ -1,3 +1,4 @@
+use core::fmt;
 use std::rc::{Rc, Weak};
 use std::cell::RefCell;
 use serde::{Deserialize};
@@ -53,6 +54,22 @@ impl SubwayGraph {
     }
 }
 
+impl fmt::Display for SubwayGraph {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        if self.stations.is_empty() {
+            return writeln!(f, "Станции отсутствуют");
+            
+        }
+
+        writeln!(f, "Граф:")?;
+        for s in &self.stations {
+            writeln!(f, "* {}", s.borrow())?;
+        }
+
+        Ok(())
+    }
+}
+
 /// Структура станции
 /// - `name` - Название станции
 /// - `line` - Линия метро
@@ -79,6 +96,24 @@ impl Station {
     }
 }
 
+impl fmt::Display for Station {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        writeln!(f, "Станция: {} ({:?})", self.name, self.line)?;
+
+        if self.connections.is_empty() {
+            return writeln!(f, "Соединения отсутсвуют");
+            
+        }
+
+        writeln!(f, "Соединения:")?;
+        for conn in &self.connections {
+            writeln!(f, " {}", conn)?;
+        }
+
+        Ok(())
+    }
+}
+
 /// Структура связи станций
 /// - `to` - Связанная станция
 /// - `travel_time` - Время перемещения до станции
@@ -97,6 +132,20 @@ impl Connection {
     }
 }
 
+impl fmt::Display for Connection {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self.to.upgrade() {
+            Some(station_rc) => {
+                let station = station_rc.borrow();
+
+                write!(f, "- {} (в пути: {} мин)", station.name, self.travel_time)
+            }
+
+            None => write!(f, "- [станция удалена] (в пути: {} мин)", self.travel_time),
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -106,7 +155,7 @@ mod tests {
     #[test]
     fn new_station() {
         let station = Station::new("Subway station 1".to_string(), Lines::Red);
-        println!("{:#?}", station);
+        println!("{}", station);
     }
 
     #[test]
@@ -122,8 +171,8 @@ mod tests {
         station_a.borrow_mut().add_connection(station_b.clone(), 7);
         station_b.borrow_mut().add_connection(station_a.clone(), 7);
 
-        println!("{:#?}", station_a);
-        println!("{:#?}", station_b);
+        println!("{}", station_a.borrow());
+        println!("{}", station_b.borrow());
     }
 
     #[test]
@@ -133,6 +182,6 @@ mod tests {
         let idx_station_b = graph.add_station("Station_B".to_string(), Lines::Red);
         graph.add_two_way_connection(idx_station_a, idx_station_b, 10);
 
-        println!("{:#?}", graph);
+        println!("{}", graph);
     }
 }
